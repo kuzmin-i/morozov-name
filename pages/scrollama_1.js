@@ -3,7 +3,7 @@ const scrollama = require("scrollama");
 
 import React, { Component } from "react";
 
-import ThreeRender from './three-model'
+import ThreeRender from './three-model_2'
 
 
 class Elements extends Component {
@@ -40,7 +40,7 @@ class Elements extends Component {
             })
             .onStepEnter((response) => {
                 this.setState({ 'step': response.index })
-                console.log(response)
+                
 
                 this.changeCameraArgs()
             })
@@ -110,8 +110,8 @@ class Elements extends Component {
           
 
 
-          console.log('step: ' + this.state.step + ', progress: ' + this.state.progress + ', Position. x: ' + this.state.camera.position[0] + ', y: ' + this.state.camera.position[1] + ', z: ' + this.state.camera.position[2])
-          console.log('Rotation. x: ' + this.state.camera.rotation[0] * 180 / Math.PI + ', y: ' + this.state.camera.rotation[1] * 180 / Math.PI + ', z: ' + this.state.camera.rotation[2] * 180 / Math.PI)
+          //console.log('step: ' + this.state.step + ', progress: ' + this.state.progress + ', Position. x: ' + this.state.camera.position[0] + ', y: ' + this.state.camera.position[1] + ', z: ' + this.state.camera.position[2])
+          //console.log('Rotation. x: ' + this.state.camera.rotation[0] * 180 / Math.PI + ', y: ' + this.state.camera.rotation[1] * 180 / Math.PI + ', z: ' + this.state.camera.rotation[2] * 180 / Math.PI)
     }
     
    
