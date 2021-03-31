@@ -119,53 +119,53 @@ class Elements extends Component {
     render() {
         return(
         <div style={{ display: "inline-flex", height: "100vh" }}>
-            <div style={{width: '30vw', zIndex: 5000}}>
+            <div className="story">
                 <div className="step" data-step="1" style = {{ 'width': '100%', 'height': '400vh', }}>
-                    <div style={{ background: 'rgba(0,0,0,.7)', 'color': 'white', width: '100%', 'padding': '60px', 'line-height': '200%', 'position': 'relative', marginTop: '40vh' }}>
+                    <div className="story__block" style={{ marginTop: '40vh' }}>
                         <h1>Формирование дорожных линий</h1>
                         <p>
                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
                     </div>
-                    <div style={{ background: 'rgba(0,0,0,.7)', 'color': 'white', width: '100%', 'padding': '60px', 'line-height': '200%', 'position': 'relative', marginTop: '100vh' }}>
+                    <div className="story__block" style={{ marginTop: '100vh' }}>
                         <h1>Формирование дорожных линий</h1>
                         <p>
                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
                     </div>
-                    <div style={{ background: 'rgba(0,0,0,.7)', 'color': 'white', width: '100%', 'padding': '60px', 'line-height': '200%', 'position': 'relative', marginTop: '100vh' }}>
+                    <div className="story__block" style={{ marginTop: '100vh' }}>
                         <h1>Формирование дорожных линий</h1>
                         <p>
                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
                     </div>
                 </div>
                 <div className="step" data-step="2" style = {{ 'width': '100%', 'height': '300vh', }}>
-                <div style={{ background: 'rgba(0,0,0,.7)', 'color': 'white', width: '100%', 'padding': '60px', 'line-height': '200%', 'position': 'relative', marginTop: '40vh' }}>
+                <div className="story__block" style={{ marginTop: '40vh' }}>
                         <h1>Формирование благоустройства</h1>
                         <p>
                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
                     </div>
-                    <div style={{ background: 'rgba(0,0,0,.7)', 'color': 'white', width: '100%', 'padding': '60px', 'line-height': '200%', 'position': 'relative', marginTop: '100vh' }}>
+                    <div className="story__block" style={{ marginTop: '100vh' }}>
                         <h1>Формирование благоустройства</h1>
                         <p>
                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
                     </div>
-                    <div style={{ background: 'rgba(0,0,0,.7)', 'color': 'white', width: '100%', 'padding': '60px', 'line-height': '200%', 'position': 'relative', marginTop: '100vh' }}>
+                    <div className="story__block" style={{ marginTop: '100vh' }}>
                         <h1>Формирование благоустройства</h1>
                         <p>
                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
                     </div>
                 </div>
                 <div className="step" data-step="3" style = {{ 'width': '100%', 'height': '400vh', }}>
-                <div style={{ background: 'rgba(0,0,0,.7)', 'color': 'white', width: '100%', 'padding': '60px', 'line-height': '200%', 'position': 'relative', marginTop: '40vh' }}>
+                <div className="story__block" style={{ marginTop: '40vh' }}>
                         <h1>Изменение функции и объема</h1>
                         <p>
                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
                     </div>
-                    <div style={{ background: 'rgba(0,0,0,.7)', 'color': 'white', width: '100%', 'padding': '60px', 'line-height': '200%', 'position': 'relative', marginTop: '100vh' }}>
+                    <div className="story__block" style={{ marginTop: '100vh' }}>
                         <h1>Изменение функции и объема</h1>
                         <p>
                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
                     </div>
-                    <div style={{ background: 'rgba(0,0,0,.7)', 'color': 'white', width: '100%', 'padding': '60px', 'line-height': '200%', 'position': 'relative', marginTop: '100vh' }}>
+                    <div className="story__block" style={{ marginTop: '100vh' }}>
                         <h1>Изменение функции и объема</h1>
                         <p>
                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>

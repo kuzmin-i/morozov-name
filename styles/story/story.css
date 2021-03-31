@@ -1,0 +1,32 @@
+.story {
+    width: 30vw;
+    z-index: 5000
+}
+
+.story__block {
+    background: rgba(0,0,0,.7);
+    color: white;
+    width: 100%;
+    padding: 60px;
+    line-height: 200%;
+    position: relative;
+}
+
+@media screen and (max-width: 400px) {
+    .story {
+        width: 100%;
+        margin: 10px
+    }
+
+    .story__block {
+        padding: 20px
+    }
+
+    .story h1 {
+        font-size: 1.5em;
+    }
+
+    .story p {
+        font-size: 15px;
+    }
+}
