@@ -1,9 +1,12 @@
 import "intersection-observer";
 const scrollama = require("scrollama");
 
-import React, { Component } from "react";
+import React, { Component, createRef } from "react";
 
 import ThreeRender from './three-model_2'
+
+import ObjectInfo from './objectinfo'
+
 
 
 class Elements extends Component {
@@ -17,11 +20,22 @@ class Elements extends Component {
             'camera': {
                 'position': [20.369, 26.707, 43.609],
                 'rotation': [-30.31 * Math.PI / 180, 21.50  * Math.PI / 180, 12.09  * Math.PI / 180]
-            }
+            },
+            'objectInfo': {'left': 0, 'top': 0, 'title': '', 'display': false}
         }
 
         this.changeCameraArgs = this.changeCameraArgs.bind(this)
+        this.showObjectInfo = this.showObjectInfo.bind(this)
 
+    }
+
+    showObjectInfo(e, title, display) {
+        const left = (e) ? e.clientX : 0
+        const top = (e) ? e.clientY : 0
+
+        const text = (title) ? title : 'Название объекта'
+
+        this.setState({objectInfo: { 'left': left, 'top': top, 'title': text, 'display': display }})
     }
 
     componentDidMount() {
@@ -117,6 +131,7 @@ class Elements extends Component {
    
 
     render() {
+
         return(
         <div style={{ display: "inline-flex", height: "100vh" }}>
             <div className="story">
@@ -176,8 +191,10 @@ class Elements extends Component {
                 <div className="step" data-step="6" style = {{ 'width': '100%', 'height': '100vh', }}></div>
             </div>
             <div className = "Map" style={{ position: 'fixed', 'width': '100vw', left: 0 }}>
-                <ThreeRender position={ this.state.camera.position } rotation={ this.state.camera.rotation } step={this.state.step} progress={this.state.progress}/>
+                <ThreeRender position={ this.state.camera.position } rotation={ this.state.camera.rotation } step={this.state.step} progress={this.state.progress} objectInfo = { this.showObjectInfo }/>
+                <ObjectInfo left = {this.state.objectInfo.left} top = {this.state.objectInfo.top} display = { this.state.objectInfo.display } title = { this.state.objectInfo.title }/>
             </div>
+            
         </div>
         )
     }

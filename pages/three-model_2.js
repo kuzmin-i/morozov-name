@@ -8,6 +8,40 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader'
 import { PerspectiveCamera } from 'three';
 
+const changeColor = (mesh, status, pointer, e, objectInfo, title) => {
+  if(pointer) {
+    mesh.current.traverse( function(object) {
+
+      if( object.isMesh ) {
+        if(status) {
+          object.material.color.set( 0xF8C135 );
+          object.material.opacity = .3;
+
+          
+        } else {
+          object.material.color.set( {r: 1, g: 1, b: 1} );
+          object.material.opacity = 1;
+
+          
+        }
+      }
+  
+    })
+    
+    if(status) {
+      if(typeof objectInfo === 'function') {
+        objectInfo(e, status, title)
+      }
+    } else {
+      if(typeof objectInfo === 'function') {
+        objectInfo(null, false, null)
+      }
+    }
+    
+  }
+  
+}
+
 
 
 function Building(props) {
@@ -25,7 +59,6 @@ function Building(props) {
     if(props.skip) {
       
       if(props.skip['step-' + props.step]) {
-        console.log(props.skip['step-' + props.step])
         gltf.scene.children[0].visible = false
       } else {
         if(!gltf.scene.children[0].visible) {
@@ -47,12 +80,18 @@ function Building(props) {
 
   })
 
+  const _title = (props.title) ? props.title : null
+
 
   return (
       <primitive
         {...props}
         ref={mesh1}
         object = {gltf.scene}
+        onPointerOver = {(e) => { changeColor(mesh1, true, props.pointer, e, props.objectInfo, _title) }}
+        onPointerOut = {(e) => { changeColor(mesh1, false, props.pointer, null, props.objectInfo, _title) }}
+        onPointerMove = {(e) => { (props.pointer) ? props.objectInfo(e, _title, true) : false }}
+        onClick = {(e) => { (props.pointer) ? props.objectInfo(e, _title, true) : false }}
         />
         
       
@@ -107,29 +146,7 @@ function Landscape(props) {
     }
   })
 
-  const changeColor = (e, status) => {
-    if(props.pointer) {
-      mesh.current.traverse( function(object) {
-
-        if( object.isMesh ) {
-          if(status) {
-            object.material.color.set( 0xF8C135 );
-            object.material.transparent = true;
-            object.material.opacity = .5;
-
-            
-          } else {
-            object.material.color.set( props.color );
-            object.material.transparent = true;
-            object.material.opacity = props.opacity;
-
-            
-          }
-        }
-    
-      })
-    }
-  }
+  
 
       let frames = props.animation['step-' + props.step]
  
@@ -153,8 +170,8 @@ function Landscape(props) {
       {...props}
       ref={mesh}
       object = {gltf.scene}
-      onPointerOver = {(e) => { changeColor(mesh, true) }}
-        onPointerOut = {(e) => { changeColor(mesh, false) }}
+      onPointerOver = {(e) => { changeColor(mesh, true, props.pointer) }}
+      onPointerOut = {(e) => { changeColor(mesh, false, props.pointer) }}
     />
     
 )
@@ -198,11 +215,12 @@ const ThreeRender = (props) => {
                 />
 
               <Suspense fallback = {null}>
-                  <Building model = 'models/gltf/Build_1.gltf'/>
-                  <Building model = 'models/gltf/Build_2.gltf'/>
+                  <Building model = 'models/gltf/Build_1.gltf' pointer = { true } objectInfo = { props.objectInfo } title = "Офисное здание"/>
+                  <Building model = 'models/gltf/Build_2.gltf' pointer = { true } objectInfo = { props.objectInfo } title = "Торговый ряд"/>
                   <Building 
                     step={props.step} 
                     model = 'models/gltf/Build_3.gltf'
+                    pointer = { true }
                     skip = {
                       {
                         'step-2': true,
@@ -211,10 +229,13 @@ const ThreeRender = (props) => {
                         'step-5': true
                       }
                     }
+                    objectInfo = { props.objectInfo }
+                    title = "Морозовский центр"
                   />
                   <Building 
                     step={props.step} 
                     model = 'models/gltf/1_2.gltf'
+                    pointer = { true }
                     skip = {
                       {
                         'step-0': true,
@@ -222,10 +243,11 @@ const ThreeRender = (props) => {
                         'step-2': true,
                       }
                     }
+                    objectInfo = { props.objectInfo }
                   />
-                  <Building model = 'models/gltf/Build_4.gltf'/>
-                  <Building model = 'models/gltf/Build_5.gltf'/>
-                  <Building model = 'models/gltf/Plane.gltf'/>
+                  <Building model = 'models/gltf/Build_4.gltf' pointer = { true } objectInfo = { props.objectInfo } title = "Проектируемое здание #1"/>
+                  <Building model = 'models/gltf/Build_5.gltf' pointer = { true } objectInfo = { props.objectInfo } title = "Проектируемое здание #2"/>
+                  <Building model = 'models/gltf/Plane.gltf' pointer = { false } objectInfo = { props.objectInfo } title = "Проектируемое здание #3"/>
 
                   <Landscape 
                     model = 'models/gltf/central_building.gltf' 
@@ -235,6 +257,8 @@ const ThreeRender = (props) => {
                     pointer = 'true'
                     opacity = '1'
                     nullMaterial = { true }
+                    pointer = { true }
+                    pointer = { true }
                     animation={
                       {
                         'step-0': { 'start': 20, 'end': 20 },
@@ -245,7 +269,7 @@ const ThreeRender = (props) => {
                         'step-5': { 'start': 119, 'end': 119 },
                       }
                     }
-                    
+                    objectInfo = { props.objectInfo }
                     />
 
                   
@@ -256,6 +280,7 @@ const ThreeRender = (props) => {
                     progress={props.progress}
                     opacity = '1'
                     live = { null }
+                    pointer = { false }
                     animation={
                       {
                         'step-0': { 'start': 0, 'end': 94 },
@@ -266,7 +291,7 @@ const ThreeRender = (props) => {
                         'step-5': { 'start': 0, 'end': 0 },
                       }
                     }
-                    
+                    objectInfo = { props.objectInfo }
                     />
 
                     <Landscape 
@@ -274,6 +299,7 @@ const ThreeRender = (props) => {
                     step={props.step} 
                     progress={props.progress}
                     opacity = '1'
+                    pointer = { false }
                     animation={
                       {
                         'step-0': { 'start': 0, 'end': 94 },
@@ -283,8 +309,9 @@ const ThreeRender = (props) => {
                         'step-4': { 'start': 0, 'end': 0 },
                         'step-5': { 'start': 0, 'end': 0 },
                       }
+                  
                     }
-                    
+                    objectInfo = { props.objectInfo }
                     />
                   
                   
